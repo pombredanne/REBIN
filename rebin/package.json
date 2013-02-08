@@ -1,0 +1,17 @@
+{
+  "name": "rebin",
+  "description": "Dashboard to create restful endpoints to local binaries",
+  "version": "0.0.1",
+  "author": "Jeff Baier <jeff@intridea.com>",
+  "private": true,
+  "engines": { "node": ">= 0.8.0" },
+  "dependencies": {
+    "socketstream": "0.3.x",
+    "hiredis": "0.1.x",
+    "redis": "0.8.x",
+    "express": "3.1.x",
+    "ss-hogan": "0.1.x",
+    "ss-less": "0.1.x",
+    "ss-backbone": "0.0.3"
+  }
+}
