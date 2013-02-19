@@ -3,7 +3,6 @@ Welcome to REbin
 
 ===============
 
-Binary test:
+RESTful binary wrapper and configuration dashboard - 
 
-./ConsoleTest string_parameter
-it will print out: hello string_parameter!
+Builds RESTful endpoints for parameterized binary/script and command input and output
