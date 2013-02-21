@@ -43,9 +43,10 @@ exports.get = function (req, res, next) {
         // if multiple parameters is with the same name are in the query string, 
         // they are combined into an array with the param name as key
         if (Array.isArray(param)) {
-          params += " " + param.join(" ");
+          params += ' "' + param.join('" "');
+          params += '"';
         } else if (typeof param !== 'undefined') {
-          params += " " + param;
+          params += ' "' + param + '"';
         }
       }
     }
