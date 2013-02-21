@@ -39,8 +39,13 @@ exports.get = function (req, res, next) {
       for (parameterId in binary.parameters) {
         var parameter = binary.parameters[parameterId];
         var param = req.query[parameter];
-        if (typeof param !== 'undefined') {
-          params += " " + req.query[parameter];
+        
+        // if multiple parameters is with the same name are in the query string, 
+        // they are combined into an array with the param name as key
+        if (Array.isArray(param)) {
+          params += " " + param.join(" ");
+        } else if (typeof param !== 'undefined') {
+          params += " " + param;
         }
       }
     }
