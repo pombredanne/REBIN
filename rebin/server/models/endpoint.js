@@ -19,6 +19,10 @@ module.exports = function(req, res, ss) {
           modelname: "Endpoint"
         };
         
+        // massage the model to save nicely in redis
+        // save parameters as json string
+        model.parameters = JSON.stringify(model.parameters);
+        
         client.hmset("endpoints:"+model.id, model);
         client.rpush("endpoints", model.id);
         
@@ -33,19 +37,30 @@ module.exports = function(req, res, ss) {
     update: function(model) {
       // waiting on the redis client fix so i don't have to manually make numbers into string before using hmset
       model.id = model.id.toString();
-      client.hmset("endpoints:"+model.id, model);
+      
       res = {
         model: model,
         method: "update",
         modelname: "Endpoint"
       };
       res = JSON.stringify(res);
+      
+      // massage the model to save nicely in redis
+      // save parameters as json string
+      model.parameters = JSON.stringify(model.parameters);
+      
+      client.hmset("endpoints:"+model.id, model);
+      
       api.generateBinaryRoutes();
       return ss.publish.all("sync:Endpoint:" + model.id, res);
     },
     read: function(model) {
       var fetchedModel;
       client.hgetall("endpoints:"+model.id, function (err, object) {
+        // massage the model to save nicely in redis
+        // save parameters as json string
+        object.parameters = JSON.parse(object.parameters);
+        
         res = {
           model: object,
           method: "read",
@@ -67,6 +82,10 @@ module.exports = function(req, res, ss) {
         
         multi.exec(function (err, objects) {
           for (object in objects) {
+            // massage the model to save nicely in redis
+            // save parameters as json string
+            objects[object].parameters = JSON.parse(objects[object].parameters);
+            
             models.push(objects[object]);
           }
 

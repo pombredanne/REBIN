@@ -18,8 +18,10 @@ exports.generateBinaryRoutes = function() {
     }
     
     multi.exec(function (err, objects) {
-      for (object in objects) {
-        routes[objects[object].url] = objects[object];
+      for (objectId in objects) {
+        object = objects[objectId]
+        object.parameters = JSON.parse(object.parameters);
+        routes[object.url] = object;
       }
       binaryRoutes = routes;
     });
@@ -27,10 +29,23 @@ exports.generateBinaryRoutes = function() {
 }
 
 exports.get = function (req, res, next) {
-  var binary = req.params.binary;
-  if (binary in binaryRoutes) {
-    var command = binaryRoutes[binary].path;
-    var child = exec(command, function (error, stdout, stderr) {
+  var binaryName = req.params.binary;
+  if (binaryName in binaryRoutes) {
+    var binary = binaryRoutes[binaryName];
+    var command = binary.path;
+    
+    var params = "";
+    if (Object.keys(req.query).length) {
+      for (parameterId in binary.parameters) {
+        var parameter = binary.parameters[parameterId];
+        var param = req.query[parameter];
+        if (typeof param !== 'undefined') {
+          params += " " + req.query[parameter];
+        }
+      }
+    }
+    
+    var child = exec(command + params, function (error, stdout, stderr) {
       console.log(stderr)
       res.send({ output: stdout });
     });
