@@ -34,6 +34,12 @@ $(function() {
   });
   
   var EndpointView = Marionette.ItemView.extend({
+    initialize: function() {
+      // this.bindTo(this.model, 'change', this.render);
+      _.bindAll(this);
+      this.model.on('change', this.render);
+    },
+    
     tagName: "tr",
     template: "endpoint-item"
   });
