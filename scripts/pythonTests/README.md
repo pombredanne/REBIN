@@ -7,13 +7,13 @@ Input variables - Any stock symbol or symbols
 
 -
 
-Example: python ystock.py AMEX
+Example: ./ystock.py AMEX
 
 Will return all stock detail for AMEX
 
 -
 
-Example python ystock.py GOOG ABC
+Example ./ystock.py GOOG ABC
 
 Will return all stock detail for GOOG and ABC
 

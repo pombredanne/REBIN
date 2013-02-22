@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def fact(n)
   if n == 0
     1
