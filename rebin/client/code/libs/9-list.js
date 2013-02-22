@@ -575,5 +575,173 @@
     //Make the wait list for the 'ready' event before adding the item to the list
     isAsync: true
   });
+  
+  
+  /**
+   * Modal file chooser for remote filesystem.
+   */
+  editors.FileSystem = editors.Base.extend({
+    events: {
+      'click': 'openEditor'
+    },
+    
+    initialize: function(options) {
+      editors.Base.prototype.initialize.call(this, options);
+
+      File = syncedModel.extend({}, { modelname: "File" });
+
+      FileList = syncedCollection.extend({ model: File }, { modelname: "File" });
+
+      this.directory = new FileList;
+      this.directory.fetch();
+    },
+
+    /**
+     * Render the list item representation
+     */
+    render: function() {
+      var self = this;
+
+      //New items in the list are only rendered when the editor has been OK'd
+      if (_.isEmpty(this.value)) {
+        this.openEditor();
+      }
+      
+      //But items with values are added automatically
+      else {
+        this.renderSummary();
+        
+        setTimeout(function() {
+          self.trigger('readyToAdd');
+        }, 0);
+      }
+
+      if (this.hasFocus) this.trigger('blur', this);
+
+      return this;
+    },
+
+    /**
+     * Renders the list item representation
+     */
+    renderSummary: function() {
+      var template = Form.templates['list.Modal'];
+
+      this.$el.html(template({
+        summary: this.getStringValue()
+      }));
+    },
+
+    /**
+     * Function which returns a generic string representation of an object
+     *
+     * @param {Object} value
+     * 
+     * @return {String}
+     */
+    itemToString: function(value) {
+      return "itemToString";
+    },
+
+    /**
+     * Returns the string representation of the object value
+     */
+    getStringValue: function() {
+      var val = this.getValue();
+      if (val) {
+        return val.split("/").pop();
+      } else {
+        return val;
+      }
+      
+    },
+
+    openEditor: function() {
+      var self = this;
+            
+      var FileView = Marionette.ItemView.extend({
+        tagName: "tr",
+        template: "files-item"
+      });
+      
+      var DirectoryView = Marionette.CompositeView.extend({
+        template: "files-list",
+        itemView: FileView,
+        itemViewContainer: "#files-list",
+      });
+      
+      var directoryView = new DirectoryView({
+        collection: this.directory
+      });
+      
+      var modal = this.modal = new Backbone.BootstrapModal({
+        content: directoryView,
+        title: "Choose An Executable",
+        allowCancel: false,
+        animate: true
+      }).open();
+
+      this.trigger('open', this);
+      this.trigger('focus', this);
+
+      modal.on('cancel', function() {
+        this.modal = null;
+
+        this.trigger('close', this);
+        this.trigger('blur', this);
+      }, this);
+      
+      modal.on('ok', _.bind(this.onModalSubmitted, this, directoryView, modal));
+    },
+
+    /**
+     * Called when the user clicks 'OK'.
+     * Runs validation and tells the list when ready to add the item
+     */
+    onModalSubmitted: function(view, modal) {
+      var isNew = !this.value;
+
+      this.modal = null;
+
+      //If OK, render the list item
+      this.value = view.$('.chosen').data('file');
+
+      this.renderSummary();
+      
+      if (isNew) this.trigger('readyToAdd');
+      
+      this.trigger('change', this);
+      
+      this.trigger('close', this);
+      this.trigger('blur', this);
+    },
+
+    getValue: function() {
+      return this.value;
+    },
+
+    setValue: function(value) {
+      this.value = value;
+    },
+    
+    focus: function() {
+      if (this.hasFocus) return;
+
+      this.openEditor();
+    },
+    
+    blur: function() {
+      if (!this.hasFocus) return;
+      
+      if (this.modal) {
+        this.modal.trigger('cancel');
+        this.modal.close();
+      }
+    }
+  }, {
+    ModalAdapter: Backbone.BootstrapModal,
+    isAsync: true
+  });
+  
 
 })();

@@ -11,6 +11,7 @@
     "redis": "0.8.x",
     "express": "3.1.x",
     "ss-hogan": "0.1.x",
-    "ss-less": "0.1.x"
+    "ss-less": "0.1.x",
+    "diveSync": "0.2.x"
   }
 }

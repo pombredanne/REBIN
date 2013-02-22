@@ -1,4 +1,4 @@
-var events = require('events'),
+var path = require('path'),
     exec = require('child_process').exec;
 
 var redis = require("redis"),
@@ -32,7 +32,7 @@ exports.get = function (req, res, next) {
   var binaryName = req.params.binary;
   if (binaryName in binaryRoutes) {
     var binary = binaryRoutes[binaryName];
-    var command = binary.path;
+    var executable = binary.executable;
     
     var params = "";
     if (Object.keys(req.query).length) {
@@ -51,7 +51,9 @@ exports.get = function (req, res, next) {
       }
     }
     
-    var child = exec(command + params, function (error, stdout, stderr) {
+    var command = path.join(process.cwd(), "executables", executable) + params;
+    
+    var child = exec(command, function (error, stdout, stderr) {
       console.log(stderr)
       res.send({ output: stdout });
     });

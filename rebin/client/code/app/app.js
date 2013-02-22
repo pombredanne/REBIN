@@ -11,7 +11,7 @@ $(function() {
     id: 'Number',
     name: {type: 'Text', validators: ['required']},
     url: {type: 'Text', validators: ['required']},
-    path: {type: 'Text', validators: ['required']},
+    executable: {type: 'FileSystem', validators: ['required']},
     parameters: 'List'
   }
   
@@ -143,5 +143,11 @@ $(function() {
   });
   
   App.start();
+  
+  $(document).on("click", ".chooseFile", function() {
+    $(".chooseFile").parent().removeClass('chosen');
+    $(this).parent().addClass('chosen');
+    return false;
+  });
 
 });
