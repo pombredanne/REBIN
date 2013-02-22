@@ -55,6 +55,15 @@ Make sure your script is marked as executable:
 
 Within the REBIN dashboard, first click: Add New Endpoint, from there you need to give your app a name. Let's use yStock as an example. Then, provide the URL you would like for your endpoint. Enter the path to your script: /root/REBIN/scripts/pythonTests/ystock.py
 
+Finally we need to add a parameter. In the case of ystock, it takes a symbol parameter (That's what we are calling it, we could call it anything really). Then click on Save.
+
+
+![alt text](http://surfiki.io/addendpoint.png)
+
+You will now see your Endpoint setup, as shown below:
+
+
+![alt text](http://surfiki.io/setup.png)
 
  
 
