@@ -52,32 +52,32 @@ Make sure your script is marked as executable:
     
 
 
+Using ystock as an example:
 
-Within the REBIN dashboard, first click: Add New Endpoint, from there you need to give your app a name. 
+Within the REBIN dashboard, first click: Add New Endpoint, first thing you will see is a dialog. This is where you select your executable. Assuming you follow the default file structure, your executables will be shown. In this example, the executables from this repo. After clicking on python/ystock.py click on OK.
 
-Let's use yStock as an example. 
+
+
+![alt text](http://surfiki.io/exselect.png)
 
 Provide the URL you would like for your endpoint: ystock
 
-Enter the path to your script: /root/REBIN/scripts/pythonTests/ystock.py
-
 Finally we need to add a parameter. In the case of ystock, it takes a symbol parameter (That's what we are calling it, we could call it anything really). Then click on Save.
 
-
-![alt text](http://surfiki.io/addendpoint.png)
+![alt text](http://surfiki.io/detail.png)
 
 You will now see your Endpoint setup, as shown below:
-
 
 ![alt text](http://surfiki.io/setup.png)
 
 We can now test our endpoint! If you happen to be running this on localhost, then your URL would be:
 
-http://localhost/api/ystock/?symbol=goog
+![alt text](http://surfiki.io/url.png)
 
-Which you can either enter directly in to a browser or simply use cURL, for which your output will be:
+Which you can either enter directly in to a browser or simply use cURL:
 
-
+    curl http://localhost/api/ystock/?symbol=goog
+	
 	{output: "goog {'stock_exchange': '"NasdaqNM"', 'market_cap': '262.3B', '200day_moving_avg': '711.306', '52_week_high': '808.97', 'price_earnings_growth_ratio': '1.27', 'price_sales_ratio': '5.23', 'price': '795.53', 'earnings_per_share': '32.214', '50day_moving_avg': '754.295', 'avg_daily_volume': '2364040', 'volume': '0', '52_week_low': '556.52', 'short_ratio': '1.30', 'price_earnings_ratio': '24.70', 'dividend_yield': 'N/A', 'dividend_per_share': '0.00', 'price_book_ratio': '3.66', 'ebitda': '16.278B', 'change': '0.00', 'book_value': '217.332'}"}
 	
 That's it!
