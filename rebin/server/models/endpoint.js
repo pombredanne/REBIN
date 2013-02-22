@@ -6,6 +6,7 @@ var redis = require("redis"),
 
 module.exports = function(req, res, ss) {
   req.use('session');
+  req.use('user.authenticated');
   return {
     create: function(model) {
       client.incr("endpoints_id", function (err, autoid) {

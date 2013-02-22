@@ -1,7 +1,8 @@
 var diveSync = require("diveSync");
 
 exports.actions = function(req, res, ss) {
-
+  req.use('session');
+  req.use('user.authenticated');
   return {
 
     list: function(){

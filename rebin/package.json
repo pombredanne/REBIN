@@ -7,11 +7,15 @@
   "engines": { "node": ">= 0.8.0" },
   "dependencies": {
     "socketstream": "0.3.x",
+    "passport": "0.1.x",
+    "passport-local": "0.1.x",
+    "bcrypt": "0.7.x",
     "hiredis": "0.1.x",
     "redis": "0.8.x",
     "express": "3.1.x",
     "ss-hogan": "0.1.x",
     "ss-less": "0.1.x",
-    "diveSync": "0.2.x"
+    "diveSync": "0.2.x",
+    "prompt": "0.2.x"
   }
 }

@@ -2,6 +2,7 @@ var diveSync = require("diveSync");
 
 module.exports = function(req, res, ss) {
   req.use('session');
+  req.use('user.authenticated');
   return {
     readAll: function(model) {
       var id, models;

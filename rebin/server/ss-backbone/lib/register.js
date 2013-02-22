@@ -11,6 +11,11 @@ module.exports = function(responderId, config, send) {
     return void 0;
   });
   return ss.message.on(responderId, function(msg, meta) {
+    var message = JSON.parse(msg);
+    if (message[0] === 401) {
+      // request responder middleware has determined we are not authenticated
+      window.location.href = "/login";
+    }
     return console.log(msg);
   });
 };
