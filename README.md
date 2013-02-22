@@ -2,9 +2,21 @@
 RESTful API server and configuration dashboard - Builds RESTful endpoints for parameterized binary/script and command input and output
 
 ##Technologies
-[Node.js](http://nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+[node.js](http://nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+For installation instructions please refer to:
+
+[Installing node.js, npm and redis](http://jason.pureconcepts.net/2011/12/installing-node-js-npm-redis-mac-os-x/)
+
+--
 
 [redis](http://redis.io/) - An open source, BSD licensed, advanced key-value store.
+
+For installation instructions please refer to:
+
+[Installing node.js, npm and redis](http://jason.pureconcepts.net/2011/12/installing-node-js-npm-redis-mac-os-x/)
+
+--
 
 [socket.io](http://socket.io/) - Socket.IO aims to make realtime apps possible in every browser and mobile device, blurring the differences between the different transport mechanisms. It's care-free realtime 100% in JavaScript.
 
@@ -15,10 +27,15 @@ OSX
 
 LINUX
 
-
-
 ##What is REBIN?
 Creating a web service really should be this easy. Doesn't matter if you program in C, C++, Python, Ruby or even C# Mono. Expose the functionality of your app or script in just a few seconds with an API endpoint.
+
+##Starting REBIN
+Assuming you are using the default configurations with node.js and redis, starting REBIN is as simple as 
+
+    (ensure you are in the /REBIN/rebin/app.js):
+
+    node app.js
 
 ##Basic Use Case
 You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
