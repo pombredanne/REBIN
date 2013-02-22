@@ -29,13 +29,15 @@ Using ystock.py as a script example:
 
 ystock.py accepts a stock symbol as input, or multiple stock symbols as input. From that input, it outputs relevant stock information.
 
-EXAMPLE: python ystock.py GOOG
+EXAMPLE: 
+
+    python ystock.py GOOG
 
 OUTPUT:
 
 GOOG
 
-{'stock_exchange': '"NasdaqNM"', 'market_cap': '262.3B', '200day_moving_avg': '711.306', '52_week_high': '808.97', 'price_earnings_growth_ratio': '1.27', 'price_sales_ratio': '5.21', 'price': '795.53', 'earnings_per_share': '32.214', '50day_moving_avg': '754.295', 'avg_daily_volume': '2364040', 'volume': '3511036', '52_week_low': '556.52', 'short_ratio': '1.30', 'price_earnings_ratio': '24.60', 'dividend_yield': 'N/A', 'dividend_per_share': '0.00', 'price_book_ratio': '3.65', 'ebitda': '16.278B', 'change': '+3.07', 'book_value': '217.332'}
+    {'stock_exchange': '"NasdaqNM"', 'market_cap': '262.3B', '200day_moving_avg': '711.306', '52_week_high': '808.97', 'price_earnings_growth_ratio': '1.27', 'price_sales_ratio': '5.21', 'price': '795.53', 'earnings_per_share': '32.214', '50day_moving_avg': '754.295', 'avg_daily_volume': '2364040', 'volume': '3511036', '52_week_low': '556.52', 'short_ratio': '1.30', 'price_earnings_ratio': '24.60', 'dividend_yield': 'N/A', 'dividend_per_share': '0.00', 'price_book_ratio': '3.65', 'ebitda': '16.278B', 'change': '+3.07', 'book_value': '217.332'}
 
 -
 
@@ -46,11 +48,11 @@ Within the REBIN dashboard, first click: Add New Endpoint, from there you need t
 
 In the case of Python, you must ensure your header has: 
 
- #!/usr/bin/env python 
+     #!/usr/bin/env python 
  
 Make sure your script is marked as executable:
  
- (chmod +x yourscript.py)
+    chmod +x yourscript.py
  
 
 
