@@ -25,7 +25,7 @@ ss_backbone_opts = {
     folder: "models"
   }
 }
-ss.responders.add(require('ss-backbone'), ss_backbone_opts);
+ss.responders.add(require('./server/ss-backbone'), ss_backbone_opts);
 
 // Minimize and pack assets if you type: SS_ENV=production node app.js
 if (ss.env === 'production') ss.client.packAssets();
