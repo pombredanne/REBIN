@@ -12,8 +12,7 @@ $(function() {
     name: {type: 'Text', validators: ['required']},
     url: {type: 'Text', validators: ['required']},
     path: {type: 'Text', validators: ['required']},
-    parameters: 'List',
-    format: {type: 'Select', options: ['JSON', 'XML']}
+    parameters: 'List'
   }
   
   // override marionette's template rendering to use hogan.js from socketstream
