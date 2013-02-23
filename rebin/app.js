@@ -23,9 +23,7 @@ ss.client.define('main', {
 
 ss.client.define('login', {
   view: 'login.html',
-  css:  ['app.less', 'libs'],
-  code: null,
-  tmpl: '*'
+  css:  ['app.less', 'libs']
 });
 
 ss.session.store.use('redis');
