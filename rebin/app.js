@@ -105,7 +105,7 @@ app.post('/login', passport.authenticate('local', {
 
 
 // Start web server
-var server = app.listen(3000);
+var server = app.listen(process.env.REBIN_PORT || 3000);
 
 // Start SocketStream
 ss.start(server);

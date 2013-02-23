@@ -1,4 +1,5 @@
 .DS_Store
 node_modules
+rebin/client/static/assets/
 npm-debug.log
 dump.rdb
