@@ -81,6 +81,10 @@ Launch Redis and REBIN with default configurations
   
     $ nodemon app.js
     * Project is now running on http://localhost:3000/
+    
+You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
+
+![alt text](http://surfiki.io/login.png)
 
 ###LINUX
 
@@ -148,9 +152,15 @@ To run REBIN on system startup, create the following Upstart configuration file:
     	exec /usr/local/bin/node app.js 2>&
     end script
 
-Issue the command to start. REBIN is now running on http://localhost/
+Issue the command to start. 
 
     $ sudo start rebin
+    
+REBIN is now running on http://localhost:3000/
+    
+You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
+
+![alt text](http://surfiki.io/login.png)
 
 
 
