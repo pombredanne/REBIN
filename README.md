@@ -227,6 +227,10 @@ That's it!
 The dashboard provides a Debug section that will aid in resolving any issues you may encounter with a specific endpoint and parameters associated.
 
 ![alt text](http://surfiki.io/debug.png)
+
+An example of an error:
+
+![alt text](http://surfiki.io/debug2.png)
  
 --
 
