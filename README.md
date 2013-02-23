@@ -30,15 +30,19 @@ LINUX
 ##What is REBIN?
 Creating a web service really should be this easy. Doesn't matter if you program in C, C++, Python, Ruby or even C# Mono. Expose the functionality of your app or script in just a few seconds with an API endpoint.
 
+##Basic Use Case
+You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
+
 ##Starting REBIN
 Assuming you are using the default configurations with node.js and redis, starting REBIN is as simple as 
 
     (ensure you are in the /REBIN/rebin/app.js):
 
     node app.js
+    
+Open your browser (assuming you are using localhost) go to: http://localhost
 
-##Basic Use Case
-You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
+
 
 ##Basic Example
 
