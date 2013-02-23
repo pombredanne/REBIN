@@ -1,6 +1,12 @@
 #REBIN
 RESTful API server and configuration dashboard - Builds RESTful endpoints for parameterized binary/script and command input and output
 
+##What is REBIN?
+Creating a web service really should be this easy. Doesn't matter if you program in C, C++, Python, Ruby or even C# Mono. Expose the functionality of your app or script in just a few seconds with an API endpoint.
+
+##Basic Use Case
+You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
+
 ##Technologies
 [node.js](http://nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
@@ -22,26 +28,129 @@ For installation instructions please refer to:
 
 [backbone.js](http://backbonejs.org/) - Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.
 
-##Platforms
-OSX
+##Platforms & Full Installation Instructions
+###OSX
 
-LINUX
+Using homebrew. Everyone should use homebrew. http://mxcl.github.com/homebrew/
+  
 
-##What is REBIN?
-Creating a web service really should be this easy. Doesn't matter if you program in C, C++, Python, Ruby or even C# Mono. Expose the functionality of your app or script in just a few seconds with an API endpoint.
 
-##Basic Use Case
-You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
+Install the "Command Line Tools for Xcode": http://connect.apple.com
 
-##Starting REBIN
-Assuming you are using the default configurations with node.js and redis, starting REBIN is as simple as 
 
-    (ensure you are in the /REBIN/rebin/app.js):
+    $ sudo xcode-select --switch /usr/bin
+    $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    $ brew update
+    $ brew doctor
 
-    node app.js
+
+Install Redis
+
+    $ brew install redis
+
+Install Node.js 
+
+    $ brew install node
+Add 
+
+    export PATH=$PATH:/usr/local/share/npm/bin` to your .bash_profile
+
+
+Clone Project and install dependencies
+ 
+    $ cd YOUR_PROJECT_DIRECTORY
+    $ git clone https://github.com/intridea/REBIN.git
+    $ cd REBIN/rebin
+    $ npm install
+    $ npm install nodemon -g
     
-Open your browser (assuming you are using localhost) go to: http://localhost
+    * This installs a node wrapper that restarts the application when changes are made.
+    https://github.com/remy/nodemon
 
+
+Launch Redis and REBIN with default configurations
+
+    $ redis-server /usr/local/etc/redis.conf
+  
+    $ node setup.js
+    
+    * This is a setup script that prompts you for a username and password for the initial web interface user account.
+  
+    $ nodemon app.js
+    * Project is now running on http://localhost:3000/
+
+###LINUX
+
+Install Node.js 
+
+    $ sudo apt-get update
+    $ sudo apt-get install build-essential openssl libssl-dev pkg-config git-core
+    
+    $ cd /usr/local/src
+    $ sudo wget http://nodejs.org/dist/v0.8.20/node-v0.8.20.tar.gz
+    $ sudo tar -xzf node-v0.8.20.tar.gz
+    $ cd node-v0.8.20/
+    
+    $ sudo ./configure
+    $ sudo make
+    $ sudo make install
+
+Install Redis
+
+    $ cd /usr/local/src
+    $ sudo wget http://redis.googlecode.com/files/redis-2.6.10.tar.gz
+    $ sudo tar -xzf redis-2.6.10.tar.gz
+    $ cd redis-2.6.10/
+  
+    $ sudo make
+    $ sudo make install
+    $ cd utils
+    $ sudo ./install_server.sh
+
+Clone Project and install dependencies
+ 
+    $ cd /var/local
+    $ sudo git clone https://github.com/intridea/REBIN.git
+  
+    $ cd REBIN/rebin
+    $ sudo npm install
+  
+    $ node setup.js
+    
+    * This is a setup script that prompts you for a username and password for the initial web interface user account.
+  
+
+Run REBIN on system startup
+  
+    * Create the following file
+    ------------  /etc/init/rebin.conf   -----------------
+    # /etc/init/rebin.conf
+
+    description "REBIN"
+
+    start on runlevel [2345]
+    stop on runlevel [^2345]
+
+    # Restart when job dies
+    respawn
+
+    # Give up restart after 5 respawns in 60 seconds
+    respawn limit 5 60
+
+    script
+    	export SS_ENV=production
+    	export NODE_ENV=production
+    	export REBIN_PORT=80
+
+    	chdir /var/local/REBIN/rebin
+    	exec /usr/local/bin/node app.js 2>&1
+
+    end script
+  
+    ------------  /etc/init/rebin.conf   -----------------
+  
+    $ sudo start rebin
+    * Project is now running on http://localhost:3000/
 
 
 ##Basic Example
@@ -93,7 +202,7 @@ You will now see your Endpoint setup, as shown below:
 
 We can now test our endpoint! If you happen to be running this on localhost, then your URL would be:
 
-![alt text](http://surfiki.io/url.png)
+http://localhost:3000/api/ystock/?symbol=goog
 
 Which you can either enter directly in to a browser or simply use cURL:
 
