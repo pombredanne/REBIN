@@ -95,13 +95,39 @@ $(function() {
     template: "endpoint-form_actions"
   });
   
+  // Debug models and views
+  
+  var Log, LogList, logs;
+  
+  Log = syncedModel.extend({}, { modelname: "Log" });
+  LogList = syncedCollection.extend({ model: Log }, { modelname: "Log" });
+  logs = new LogList;
+  
+  var LogView = Marionette.ItemView.extend({
+    initialize: function() {
+      _.bindAll(this);
+      this.model.on('change', this.render);
+    },
+    
+    tagName: "div",
+    template: "log-item"
+  });
+  
+  var LogListView = Marionette.CompositeView.extend({
+    template: "log-list",
+    itemView: LogView,
+    itemViewContainer: "#log-list",
+  });
+  
   var Router = Backbone.Router.extend({
     routes: {
       "": "showEndpointsList",
       "endpoints": "showEndpointsList",
       "endpoints/add": "addEndpoint",
       "endpoints/show/:id": "showEndpoint",
-      "endpoints/edit/:id": "editEndpoint"
+      "endpoints/edit/:id": "editEndpoint",
+      
+      "debug": "showLogList"
     },
     
     addEndpoint: function() {
@@ -134,6 +160,14 @@ $(function() {
       endpointFormLayout.form.show(EndpointForm);
       endpointFormLayout.form_actions.show(new EndpointFormActions());
     },
+    
+    showLogList: function(){
+      logs.fetch();
+      App.main.show(new LogListView({
+        collection: logs
+      }));
+    },
+    
   });
   
   App.on("initialize:after", function(){

@@ -112,3 +112,7 @@ ss.start(server);
 
 // Append SocketStream middleware to the stack
 app.stack = ss.http.middleware.stack.concat(app.stack);
+
+process.on('uncaughtException', function(error) {
+  console.log(error);
+});
