@@ -221,6 +221,12 @@ Which you can either enter directly in to a browser or simply use cURL:
 	{output: "goog {'stock_exchange': '"NasdaqNM"', 'market_cap': '262.3B', '200day_moving_avg': '711.306', '52_week_high': '808.97', 'price_earnings_growth_ratio': '1.27', 'price_sales_ratio': '5.23', 'price': '795.53', 'earnings_per_share': '32.214', '50day_moving_avg': '754.295', 'avg_daily_volume': '2364040', 'volume': '0', '52_week_low': '556.52', 'short_ratio': '1.30', 'price_earnings_ratio': '24.70', 'dividend_yield': 'N/A', 'dividend_per_share': '0.00', 'price_book_ratio': '3.66', 'ebitda': '16.278B', 'change': '0.00', 'book_value': '217.332'}"}
 	
 That's it!
+
+##Debug
+
+The dashboard provides a Debug section that will aid in resolving any issues you may encounter with a specific endpoint and parameters associated.
+
+![alt text](http://surfiki.io/debug.png)
  
 --
 
