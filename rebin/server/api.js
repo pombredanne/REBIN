@@ -1,4 +1,5 @@
-var path = require('path'),
+var ss = require('socketstream'),
+    path = require('path'),
     exec = require('child_process').exec;
 
 var redis = require("redis"),
@@ -56,6 +57,34 @@ exports.get = function (req, res, next) {
     var child = exec(command, function (error, stdout, stderr) {
       console.log(stderr)
       res.send({ output: stdout });
+      
+      // log the request and response to redis for debug viewer
+      client.incr("logs_id", function (err, autoid) {
+        var model = {
+          id: autoid.toString(),
+          datetime: new Date().toISOString(),
+          remote_ip: req.ip,
+          url: req.path,
+          parameters: JSON.stringify(req.query),
+          // user:
+          headers: JSON.stringify(req.headers),
+          response: stdout,
+          error: stderr
+        };
+        
+        client.hmset("logs:"+model.id, model);
+        client.expire("logs:"+model.id, 3600)
+        client.rpush("logs", model.id);
+        
+        model.error = model.error || false;
+        
+        res = {
+          model: model,
+          method: "create",
+          modelname: "Endpoint"
+        };
+        ss.api.publish.all("sync:Log", JSON.stringify(res));
+      });
     });
     
   } else {
