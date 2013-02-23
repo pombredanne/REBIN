@@ -24,6 +24,7 @@ $(function() {
   var App = new Marionette.Application();
   
   App.addRegions({
+    menu: '#menu',
     breadcrumbs: '#breadcrumbs',
     main: '#main'
   });
@@ -95,6 +96,12 @@ $(function() {
     template: "endpoint-form_actions"
   });
   
+  var EndpointListBreadcrumbs = Marionette.ItemView.extend({ template: "endpoint-breadcrumbs_list" });
+  var EndpointAddBreadcrumbs = Marionette.ItemView.extend({ template: "endpoint-breadcrumbs_add" });
+  var EndpointDetailBreadcrumbs = Marionette.ItemView.extend({ template: "endpoint-breadcrumbs_detail" });
+  var EndpointEditBreadcrumbs = Marionette.ItemView.extend({ template: "endpoint-breadcrumbs_edit" });
+  var EndpointMenu = Marionette.ItemView.extend({ template: "endpoint-menu" });
+  
   // Debug models and views
   
   var Log, LogList, logs;
@@ -119,6 +126,9 @@ $(function() {
     itemViewContainer: "#log-list",
   });
   
+  var LogListBreadcrumbs = Marionette.ItemView.extend({ template: "log-breadcrumbs_list" });
+  var DebugMenu = Marionette.ItemView.extend({ template: "log-menu" });
+  
   var Router = Backbone.Router.extend({
     routes: {
       "": "showEndpointsList",
@@ -131,6 +141,9 @@ $(function() {
     },
     
     addEndpoint: function() {
+      App.menu.show(new EndpointMenu());
+      App.breadcrumbs.show(new EndpointAddBreadcrumbs());
+      
       var endpointFormLayout = new EndpointFormLayout();
       App.main.show(endpointFormLayout);
       
@@ -140,18 +153,25 @@ $(function() {
     },
     
     showEndpointsList: function(){
+      App.breadcrumbs.show(new EndpointListBreadcrumbs());
+      App.menu.show(new EndpointMenu());
       App.main.show(new EndpointListView({
         collection: endpoints
       }));
     },
     
     showEndpoint: function(id){
+      App.breadcrumbs.show(new EndpointDetailBreadcrumbs());
+      App.menu.show(new EndpointMenu());
       App.main.show(new EndpointDetailView({
         model: endpoints.get(id)
       }));
     },
     
     editEndpoint: function(id){
+      App.menu.show(new EndpointMenu());
+      App.breadcrumbs.show(new EndpointEditBreadcrumbs());
+      
       var endpointFormLayout = new EndpointFormLayout();
       App.main.show(endpointFormLayout);
       
@@ -162,6 +182,9 @@ $(function() {
     },
     
     showLogList: function(){
+      App.menu.show(new DebugMenu());
+      App.breadcrumbs.show(new LogListBreadcrumbs());
+      
       logs.fetch();
       App.main.show(new LogListView({
         collection: logs
