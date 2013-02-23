@@ -84,7 +84,11 @@ Setup a User and Password for the Dashboard
 Start REBIN
   
     $ nodemon app.js
-    * Project is now running on http://localhost:3000/
+    
+
+REBIN is now running:
+
+* Open your broswer to: http://localhost:3000/
     
 You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
 
@@ -163,7 +167,9 @@ Issue the command to start.
 
     $ sudo start rebin
     
-REBIN is now running on http://localhost:3000/
+REBIN is now running:
+
+* Open your broswer to: http://localhost:3000/
     
 You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
 
