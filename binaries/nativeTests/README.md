@@ -6,20 +6,20 @@ ConsoleTest
 Simple text of input parameter
 
 
-Example: ./ConsoleTest "Hello"
+    Example: ./ConsoleTest "Hello"
 
 --
 
-mops.ubuntu32
+mops
 
 Simple sum of input values
 
-Example: ./mops 10 2 -1 100 25.6
+    Example: ./mops 10 2 -1 100 25.6
 
 --
 
-mops.ubuntu64
+mopsx64
 
 Simple sum of input values
 
-Example: ./mops 10 2 -1 100 25.6
+    Example: ./mopsx64 10 2 -1 100 25.6
