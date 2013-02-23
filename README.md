@@ -53,7 +53,7 @@ Install Node.js
     $ brew install node
 Add 
 
-    `export PATH=$PATH:/usr/local/share/npm/bin` to your .bash_profile
+    export PATH=$PATH:/usr/local/share/npm/bin to your .bash_profile
 
 
 Clone Project and install dependencies
@@ -191,10 +191,6 @@ OUTPUT:
 
 -
 ###Now, let's get the above working as a RESTful endpoint!
-
-
-    
-
 
 Using ystock as an example:
 
