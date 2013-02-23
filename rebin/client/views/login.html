@@ -1,13 +1,74 @@
-<form action="/login" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <SocketStream>
+    <title>REBIN login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+  
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">REBIN</a>
+          <div class="navbar-content">
+            <ul class="nav">
+              <li class="active">
+                <a href="#">Home</a> 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
+    <div class="container">
+      <div class="row">
+        <div class="span3">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+              <a href="#">Endpoints</a> 
+            </li>
+            <li>
+              <a href="#">Debug</a> 
+            </li>
+          </ul>
+          <div class="well">
+            <p>
+              Create endpoints that map a URL to a local binary. Creating, editing and deleting endpoints takes effect immediately.
+            </p>
+          </div>
+        </div>
+        <div class="span9">
+          <ul class="breadcrumb">
+            <li>
+              <a href="#">Users</a>
+              <span class="divider">/</span>
+            </li>
+            <li class="active">Login</li>
+          </ul>
+          <div class="row">
+            <div class="span9">
+              <div id="main" class="well">
+                <form action="/login" method="post">
+                    <div>
+                        <label>Username:</label>
+                        <input type="text" name="username"/>
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password"/>
+                    </div>
+                    <div>
+                        <input type="submit" value="Log In"/>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <input type="submit" value="Log In"/>
-    </div>
-</form>
+  </body>
+</html>

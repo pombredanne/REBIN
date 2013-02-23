@@ -6,8 +6,6 @@
     <title>REBIN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <link rel="stylesheet" href="https://app.divshot.com/themes/spacelab/bootstrap.min.css">
-    <link rel="stylesheet" href="https://app.divshot.com/css/bootstrap-responsive.css"> 
   </head>
   
   <body>
@@ -28,14 +26,8 @@
     <div class="container">
       <div class="row">
         <div class="span3">
-          <ul class="nav nav-pills nav-stacked">
-            <li class="active">
-              <a href="#">Endpoints</a> 
-            </li>
-            <li>
-              <a href="#">Debug</a> 
-            </li>
-          </ul>
+          <div id="menu">
+          </div>
           <div class="well">
             <p>
               Create endpoints that map a URL to a local binary. Creating, editing and deleting endpoints takes effect immediately.
@@ -43,13 +35,7 @@
           </div>
         </div>
         <div class="span9">
-          <ul class="breadcrumb">
-            <li>
-              <a href="#">Endpoints</a>
-              <span class="divider">/</span>
-            </li>
-            <li class="active">List</li>
-          </ul>
+          <div id="breadcrumbs"></div>
           <div class="row">
             <div class="span9">
               <div id="main" class="well">
@@ -60,7 +46,5 @@
         </div>
       </div>
     </div>
-    <script src="https://app.divshot.com/js/jquery.min.js"></script>
-    <script src="https://app.divshot.com/js/bootstrap.min.js"></script>
   </body>
 </html>

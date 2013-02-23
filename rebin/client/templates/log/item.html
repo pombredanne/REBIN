@@ -1,0 +1,41 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    {{#error}}<span class="label label-important pull-right">Error</span>{{/error}}
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#log-list" href="#{{ id }}">
+      {{ url }} - {{ remote_ip }} - {{ datetime }} 
+    </a>
+  </div>
+  <div id="{{ id }}" class="accordion-body collapse">
+    <div class="accordion-inner">
+      {{#error}}
+      <div class="alert alert-error">
+        <strong>Error:</strong> {{ error }}
+      </div>
+      {{/error}}
+      <p>
+        <strong>URL</strong> <br/>
+        {{ url }}
+      </p>
+      <p>
+        <strong>Parameters</strong> <br/>
+        {{ parameters }}
+      </p>
+      <p>
+        <strong>Datetime</strong> <br/>
+        {{ datetime }}
+      </p>
+      <p>
+        <strong>Remote IP</strong> <br/>
+        {{ remote_ip }}
+      </p>
+      <p>
+        <strong>Headers</strong> <br/>
+        {{ headers }}
+      </p>
+      <p>
+        <strong>Response</strong> <br/>
+        {{ response }}
+      </p>
+    </div>
+  </div>
+</div>
