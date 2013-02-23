@@ -143,8 +143,7 @@ Run REBIN on system startup
     	export REBIN_PORT=80
 
     	chdir /var/local/REBIN/rebin
-    	exec /usr/local/bin/node app.js 2>&1
-
+    	exec /usr/local/bin/node app.js 2>&
     end script
   
     ------------  /etc/init/rebin.conf   -----------------
@@ -152,7 +151,28 @@ Run REBIN on system startup
     $ sudo start rebin
     * Project is now running on http://localhost:3000/
 
+##Preparing executables and Security
 
+Executables can only be run from:
+
+/REBIN/rebin/executables
+
+As well, all scripts require the +x flag
+
+    chmod +x yourscript.py
+
+In the case of Python, you must ensure your header has: 
+
+     #!/usr/bin/env python 
+     
+Ruby
+
+    #!/usr/bin/envy ruby
+
+R
+
+    #!/usr/bin/Rscript
+ 
 ##Basic Example
 
 Using ystock.py as a script example: 
@@ -172,13 +192,7 @@ OUTPUT:
 -
 ###Now, let's get the above working as a RESTful endpoint!
 
-In the case of Python, you must ensure your header has: 
 
-     #!/usr/bin/env python 
- 
-Make sure your script is marked as executable:
- 
-    chmod +x yourscript.py
     
 
 
