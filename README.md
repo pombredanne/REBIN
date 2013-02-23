@@ -74,10 +74,14 @@ Clone Project and install dependencies
 Launch Redis and REBIN with default configurations
 
     $ redis-server /usr/local/etc/redis.conf
+    
+Setup a User and Password for the Dashboard
   
     $ node setup.js
     
     * This is a setup script that prompts you for a username and password for the initial web interface user account.
+    
+Start REBIN
   
     $ nodemon app.js
     * Project is now running on http://localhost:3000/
@@ -108,10 +112,12 @@ Install Redis
     $ sudo wget http://redis.googlecode.com/files/redis-2.6.10.tar.gz
     $ sudo tar -xzf redis-2.6.10.tar.gz
     $ cd redis-2.6.10/
-  
+    
     $ sudo make
     $ sudo make install
+    
     $ cd utils
+    
     $ sudo ./install_server.sh
 
 Clone Project and install dependencies
@@ -121,6 +127,8 @@ Clone Project and install dependencies
   
     $ cd REBIN/rebin
     $ sudo npm install
+    
+Setup a User and Password for the Dashboard
   
     $ node setup.js
     
@@ -147,8 +155,7 @@ To run REBIN on system startup, create the following Upstart configuration file:
     	export SS_PACK=1
     	export NODE_ENV=production
     	export REBIN_PORT=80
-
-    	chdir /var/local/REBIN/rebin
+		chdir /var/local/REBIN/rebin
     	exec /usr/local/bin/node app.js 2>&
     end script
 
