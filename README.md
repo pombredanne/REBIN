@@ -35,8 +35,11 @@ Using homebrew. Everyone should use homebrew. http://mxcl.github.com/homebrew/
   
 
 
-Install the "Command Line Tools for Xcode": http://connect.apple.com
+Install the "Command Line Tools for Xcode": http://connect.apple.com or use the Xcode included "Downloads" preference pane to install optional components such as command line tools, and previous iOS Simulators. To open this pane click the "Xcode" button in the top left of the screen near the Apple logo, then click "Preferences" then click "Downloads".
 
+![alt text](http://surfiki.io/CLT.png)
+
+--
 
     $ sudo xcode-select --switch /usr/bin
     $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
