@@ -85,14 +85,7 @@ Start REBIN
   
     $ nodemon app.js
     
-
-REBIN is now running:
-
-* Open your broswer to: http://localhost:3000/
-    
-You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
-
-![alt text](http://surfiki.io/login.png)
+REBIN is now running: See Dashboard section
 
 ###LINUX
 
@@ -167,15 +160,7 @@ Issue the command to start.
 
     $ sudo start rebin
     
-REBIN is now running:
-
-* Open your broswer to: http://localhost:3000/
-    
-You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
-
-![alt text](http://surfiki.io/login.png)
-
-
+REBIN is now running: See dashboard section
 
 ##Preparing executables and Security
 
@@ -198,6 +183,14 @@ Ruby
 R
 
     #!/usr/bin/Rscript
+
+##Dashboard
+
+* Open your broswer to: http://localhost:3000/
+    
+You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
+
+![alt text](http://surfiki.io/login.png)
  
 ##Basic Example
 
