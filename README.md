@@ -120,10 +120,8 @@ Clone Project and install dependencies
     * This is a setup script that prompts you for a username and password for the initial web interface user account.
   
 
-Run REBIN on system startup
-  
-    * Create the following file
-    ------------  /etc/init/rebin.conf   -----------------
+To run REBIN on system startup, create the following Upstart configuration file:
+
     # /etc/init/rebin.conf
 
     description "REBIN"
@@ -139,17 +137,19 @@ Run REBIN on system startup
 
     script
     	export SS_ENV=production
+    	export SS_PACK=1
     	export NODE_ENV=production
     	export REBIN_PORT=80
 
     	chdir /var/local/REBIN/rebin
     	exec /usr/local/bin/node app.js 2>&
     end script
-  
-    ------------  /etc/init/rebin.conf   -----------------
-  
+
+Issue the command to start. REBIN is now running on http://localhost/
+
     $ sudo start rebin
-    * Project is now running on http://localhost:3000/
+
+
 
 ##Preparing executables and Security
 
