@@ -85,7 +85,7 @@ Start REBIN
   
     $ nodemon app.js
     
-REBIN is now running: See Dashboard section
+####REBIN is now running: See Dashboard section
 
 ###LINUX
 
@@ -160,7 +160,7 @@ Issue the command to start.
 
     $ sudo start rebin
     
-REBIN is now running: See dashboard section
+####REBIN is now running
 
 ##Dashboard
 
@@ -170,7 +170,7 @@ You should see: (The fields will be blank) Enter the credendtials you defined wh
 
 ![alt text](http://surfiki.io/login.png)
  
-##Basic Example
+###Basic Example
 
 Using ystock.py as a script example: 
 
@@ -190,7 +190,7 @@ OUTPUT:
 #####Let's get the above working as a RESTful endpoint!
 
 
-### Preparing executables and Security
+###Preparing executables and Security
 
 Executables can only be run from:
 
