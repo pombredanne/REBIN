@@ -162,28 +162,6 @@ Issue the command to start.
     
 REBIN is now running: See dashboard section
 
-##Preparing executables and Security
-
-Executables can only be run from:
-
-/REBIN/rebin/executables
-
-As well, all scripts require the +x flag
-
-    chmod +x yourscript.py
-
-In the case of Python, you must ensure your header has: 
-
-     #!/usr/bin/env python 
-     
-Ruby
-
-    #!/usr/bin/envy ruby
-
-R
-
-    #!/usr/bin/Rscript
-
 ##Dashboard
 
 * Open your broswer to: http://localhost:3000/
@@ -209,9 +187,32 @@ OUTPUT:
     {'stock_exchange': '"NasdaqNM"', 'market_cap': '262.3B', '200day_moving_avg': '711.306', '52_week_high': '808.97', 'price_earnings_growth_ratio': '1.27', 'price_sales_ratio': '5.21', 'price': '795.53', 'earnings_per_share': '32.214', '50day_moving_avg': '754.295', 'avg_daily_volume': '2364040', 'volume': '3511036', '52_week_low': '556.52', 'short_ratio': '1.30', 'price_earnings_ratio': '24.60', 'dividend_yield': 'N/A', 'dividend_per_share': '0.00', 'price_book_ratio': '3.65', 'ebitda': '16.278B', 'change': '+3.07', 'book_value': '217.332'}
 
 -
-###Now, let's get the above working as a RESTful endpoint!
+#####Let's get the above working as a RESTful endpoint!
 
-Using ystock as an example:
+
+### Preparing executables and Security
+
+Executables can only be run from:
+
+    /REBIN/rebin/executables/
+
+As well, all scripts require the +x flag
+
+    chmod +x yourscript.py
+
+In the case of Python, you must ensure your header has: 
+
+     #!/usr/bin/env python 
+     
+Ruby
+
+    #!/usr/bin/envy ruby
+
+R
+
+    #!/usr/bin/Rscript
+
+#####Using ystock as an example:
 
 Within the REBIN dashboard, first click: Add New Endpoint, first thing you will see is a dialog. This is where you select your executable. Assuming you follow the default file structure, your executables will be shown. In this example, the executables from this repo. After clicking on python/ystock.py click on OK.
 
