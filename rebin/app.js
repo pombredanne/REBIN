@@ -6,7 +6,8 @@ var ss = require('socketstream'),
     express = require('express');
     
 var passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+    LocalStrategy = require('passport-local').Strategy
+    ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
     
 var bcrypt = require('bcrypt');
 var api = require('./server/api');
@@ -81,7 +82,7 @@ ss.responders.add(require('./server/ss-backbone'), ss_backbone_opts);
 if (ss.env === 'production') ss.client.packAssets();
 
 // Serve this client on the root URL
-app.get('/', function(req, res) {
+app.get('/', ensureLoggedIn('/login'), function(req, res) {
   res.serveClient('main');
 });
 
