@@ -9,6 +9,7 @@
     "socketstream": "0.3.x",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
+    "connect-ensure-login": "0.1.x",
     "bcrypt": "0.7.x",
     "hiredis": "0.1.x",
     "redis": "0.8.x",
