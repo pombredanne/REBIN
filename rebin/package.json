@@ -7,6 +7,7 @@
   "engines": { "node": ">= 0.8.0" },
   "dependencies": {
     "socketstream": "0.3.x",
+    "sockjs": "0.3.x",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
     "connect-ensure-login": "0.1.x",
