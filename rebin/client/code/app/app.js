@@ -12,7 +12,8 @@ $(function() {
     name: {type: 'Text', validators: ['required']},
     url: {type: 'Text', validators: ['required']},
     executable: {type: 'FileSystem', validators: ['required']},
-    parameters: 'List'
+    parameters: 'List',
+    description: 'TextArea'
   }
   
   // override marionette's template rendering to use hogan.js from socketstream

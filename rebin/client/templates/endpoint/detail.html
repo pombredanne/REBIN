@@ -1,27 +1,29 @@
 <div class="row">
   <div class="span4">
-    <p>
-      <b>App Name</b>
-      <br>{{ name }}
-    </p>
-    <p>
-      <b>URL
-        <br> 
-      </b>/api/{{ url }}/
-    </p>
-    <p style="overflow-x: hidden">
-      <b>Executable
-        <br> 
-      </b>{{ executable }}
-    </p>
+    <h4>App Name</h4>
+    <p>{{ name }}</p>
+    
+    <h4>URL</h4>
+    <p>/api/{{ url }}/</p>
+    
+    <h4>Executable</h4>
+    <p style="overflow-x: hidden">{{ executable }}</p>
   </div>
   <div class="span4">
-    <h5>Input Parameters</h5>
+    <h4>Input Parameters</h4>
     <ul>
       {{#parameters}}<li>{{ . }}</li>{{/parameters}}
     </ul>
   </div>
 </div>
+
+<div class="row">
+  <div class="span8">
+    <h4>Description</h4>
+    <p>{{ description }}</p>
+  </div>
+</div>
+<br />
 
 <div class="row">
   <div class="span4">
