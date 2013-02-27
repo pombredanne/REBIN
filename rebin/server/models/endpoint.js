@@ -19,6 +19,11 @@ module.exports = function(req, res, ss) {
           method: "confirm",
           modelname: "Endpoint"
         };
+        ss.publish.socketId(req.socketId, "sync:Endpoint:" + cid, JSON.stringify(res));
+        
+        delete res.cid;
+        res.method = "create";
+        ss.publish.all("sync:Endpoint", JSON.stringify(res));
         
         // massage the model to save nicely in redis
         // save parameters as json string
@@ -26,12 +31,7 @@ module.exports = function(req, res, ss) {
         
         client.hmset("endpoints:"+model.id, model);
         client.rpush("endpoints", model.id);
-        
         api.generateBinaryRoutes();
-        ss.publish.socketId(req.socketId, "sync:Endpoint:" + cid, JSON.stringify(res));
-        delete res.cid;
-        res.method = "create";
-        ss.publish.all("sync:Endpoint", JSON.stringify(res));
       });
       return;
     },
@@ -45,15 +45,16 @@ module.exports = function(req, res, ss) {
         modelname: "Endpoint"
       };
       res = JSON.stringify(res);
+      ss.publish.all("sync:Endpoint:" + model.id, res);
       
       // massage the model to save nicely in redis
       // save parameters as json string
       model.parameters = JSON.stringify(model.parameters);
       
       client.hmset("endpoints:"+model.id, model);
-      
       api.generateBinaryRoutes();
-      return ss.publish.all("sync:Endpoint:" + model.id, res);
+      
+      return;
     },
     read: function(model) {
       var fetchedModel;
