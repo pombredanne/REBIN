@@ -29,6 +29,21 @@ exports.generateBinaryRoutes = function() {
   });
 }
 
+
+function sanitise(unsanitised_string,match_to){
+  var sanitised = unsanitised_string.match(match_to);
+  if (sanitised !== null){
+    var toReturn = new Array();
+    for(var idx = 1; idx < sanitised.length; idx++){
+      toReturn.push(sanitised[idx]);
+    }
+    toReturn = toReturn.join('');
+    return toReturn; 
+  } else {
+    return null;
+  }
+}
+
 exports.get = function (req, res, next) {
   var binaryName = req.params.binary;
   if (binaryName in binaryRoutes) {
@@ -37,18 +52,28 @@ exports.get = function (req, res, next) {
     
     var params = "";
     if (Object.keys(req.query).length) {
-      for (parameterId in binary.parameters) {
-        var parameter = binary.parameters[parameterId];
+      for (parameterObject in binary.parameters) {
+        var parameter = binary.parameters[parameterObject]['name'];
+	var match_to = new RegExp(binary.parameters[parameterObject]['type']);
         var param = req.query[parameter];
         
         // if multiple parameters is with the same name are in the query string, 
         // they are combined into an array with the param name as key
         if (Array.isArray(param)) {
-          params += ' "' + param.join('" "');
+	  var safe_params = new Array();
+	  for(idx in param){
+	    var sanitised = sanitise(param[idx],match_to);
+	    if (sanitised != null) {
+	      safe_params.push(sanitise(param[idx],match_to));
+	    }
+	  }
+          params += ' "' + safe_params.join('" "');
           params += '"';
         } else if (typeof param !== 'undefined') {
+	  param = sanitise(param,match_to);
           params += ' "' + param + '"';
         }
+	console.log(params);
       }
     }
     
