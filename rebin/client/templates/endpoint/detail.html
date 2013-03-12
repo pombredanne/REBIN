@@ -17,9 +17,25 @@
   </div>
   <div class="span4">
     <h5>Input Parameters</h5>
-    <ul>
-      {{#parameters}}<li>{{ . }}</li>{{/parameters}}
-    </ul>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+	  <th> Name </th><th>Regex</th>
+	</tr>
+      </thead>
+      <tbody>
+        {{#parameters}}
+        <tr>
+          <td>
+	    {{ name }}
+	  </td>
+	  <td>
+	    {{ type }} 
+	  </td>
+	</tr>
+       {{/parameters}}
+      </tbody>
+    </table>
   </div>
 </div>
 
