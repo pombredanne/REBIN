@@ -71,7 +71,9 @@ exports.get = function (req, res, next) {
           params += '"';
         } else if (typeof param !== 'undefined') {
 	  param = sanitise(param,match_to);
-          params += ' "' + param + '"';
+	  if(param != null) {
+            params += ' "' + param + '"';
+	  }
         }
 	console.log(params);
       }
