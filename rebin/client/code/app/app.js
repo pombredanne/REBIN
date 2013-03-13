@@ -14,7 +14,10 @@ $(function() {
     executable: {type: 'FileSystem', validators: ['required']},
     parameters:    { type: 'List', itemType: 'Object', subSchema: {
         name: { validators: ['required'] },
-        type: 'Text'
+        regex: 'Text',
+	'command line flag binding': 'Text',
+	'default value': 'Text',
+	'allow override of default' : { type: 'Checkbox' }
     }}
   }
   

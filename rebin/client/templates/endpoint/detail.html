@@ -20,19 +20,41 @@
     <table class="table table-striped">
       <thead>
         <tr>
-	  <th> Name </th><th>Regex</th>
-	</tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Regex
+          </th>
+          <th>
+            CLI flag
+          </th>
+          <th>
+	    Default Value
+	  </th>
+	  <th>
+	    Can override?
+	  </th>
+        </tr>
       </thead>
       <tbody>
         {{#parameters}}
         <tr>
           <td>
-	    {{ name }}
+            {{ name }}
+          </td>
+          <td>
+            {{ regex }} 
+          </td>
+          <td>
+            {{ command line flag binding }} 
+          </td>
+	  <td>
+	    {{ default value }}
 	  </td>
 	  <td>
-	    {{ type }} 
-	  </td>
-	</tr>
+	    {{ allow override of default }}
+        </tr>
        {{/parameters}}
       </tbody>
     </table>

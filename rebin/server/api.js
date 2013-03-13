@@ -54,28 +54,51 @@ exports.get = function (req, res, next) {
     if (Object.keys(req.query).length) {
       for (parameterObject in binary.parameters) {
         var parameter = binary.parameters[parameterObject]['name'];
-	var match_to = new RegExp(binary.parameters[parameterObject]['type']);
-        var param = req.query[parameter];
-        
-        // if multiple parameters is with the same name are in the query string, 
-        // they are combined into an array with the param name as key
-        if (Array.isArray(param)) {
-	  var safe_params = new Array();
-	  for(idx in param){
-	    var sanitised = sanitise(param[idx],match_to);
-	    if (sanitised != null) {
-	      safe_params.push(sanitise(param[idx],match_to));
-	    }
-	  }
-          params += ' "' + safe_params.join('" "');
-          params += '"';
-        } else if (typeof param !== 'undefined') {
-	  param = sanitise(param,match_to);
-	  if(param != null) {
-            params += ' "' + param + '"';
-	  }
+        var match_to = new RegExp(binary.parameters[parameterObject]['regex']);
+        // Commands can have a command line flag bound to them. If they do we wish to prepend
+        // the flag before the command. 
+        var cli_binding = binary.parameters[parameterObject]['command line flag binding'];
+        if (cli_binding != null) {
+          params += ' '+cli_binding;
         }
-	console.log(params);
+        var param = req.query[parameter];
+
+
+	// Sometimes you may wish to pass a default value to a command line
+	// argument, without need the user to specify it manually (or maybe you
+	// want it to be opaque to the end user). 
+        var default_value= binary.parameters[parameterObject]['default value'];
+	var override_allowed = binary.parameters[parameterObject]['allow override of default'];
+        if (
+		default_value != null //make sure we have a default to set, otherwise assume comes from user
+		&& 
+		((param == null || param.length == 0 ) // in the case that they didn't set the argument
+		|| 
+		( override_allowed == false )) // Or if they aren't allowed to override it, we use the default
+	) {
+          params += ' '+default_value;
+	// In the event the user provides a value (and is allowed to override)
+	// OR there is no default, we should attempt to use that
+        } else {
+          // if multiple parameters is with the same name are in the query string, 
+          // they are combined into an array with the param name as key
+          if (Array.isArray(param)) {
+            var safe_params = new Array();
+            for(idx in param){
+              var sanitised = sanitise(param[idx],match_to);
+              if (sanitised != null) {
+                safe_params.push(sanitise(param[idx],match_to));
+              }
+            }
+            params += ' "' + safe_params.join('" "');
+            params += '"';
+          } else if (typeof param !== 'undefined') {
+              param = sanitise(param,match_to);
+              if(param != null) {
+                params += ' "' + param + '"';
+            }
+          }
+        }
       }
     }
     
