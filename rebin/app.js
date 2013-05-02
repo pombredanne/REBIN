@@ -29,6 +29,7 @@ ss.client.define('login', {
 
 ss.session.store.use('redis');
 ss.publish.transport.use('redis');
+ss.ws.transport.use(require('ss-sockjs'));
 
 passport.use(new LocalStrategy(
   function(username, password, done) {

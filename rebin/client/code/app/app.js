@@ -12,6 +12,7 @@ $(function() {
     name: {type: 'Text', validators: ['required']},
     url: {type: 'Text', validators: ['required']},
     executable: {type: 'FileSystem', validators: ['required']},
+    description: 'TextArea',
     parameters:    { type: 'List', itemType: 'Object', subSchema: {
         name: { validators: ['required'] },
         regex: 'Text',
