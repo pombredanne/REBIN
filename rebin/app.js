@@ -17,7 +17,7 @@ var app = express();
 // Define a single-page client called 'main'
 ss.client.define('main', {
   view: 'app.html',
-  css:  ['app.less', 'libs'],
+  css:  ['libs', 'app.css'],
   code: ['libs', 'app'],
   tmpl: '*'
 });

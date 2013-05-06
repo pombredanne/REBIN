@@ -1,0 +1,148 @@
+.align-left { text-align: left; }
+.align-right { text-align: right; }
+.align-center { text-align: center; }
+.align-justify { text-align: justify; }
+
+.push-down { margin-bottom: 1em; }
+.push-left { margin-left: 1em; }
+.push-right { margin-right: 1em; }
+.push-up { margin-top: 1em; }
+
+@media(min-width: 980px) {
+  .navbar-fixed-top + * {
+    padding-top: 60px;
+  }
+
+  .navbar-fixed-bottom + *{
+    margin-bottom: 60px;
+  }
+}
+
+.app td:first-child {
+width: 35%;
+}
+
+#add_app_button {
+  margin-top: 15px
+}
+
+form {
+  margin: 0 0 0px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+    color: #fd9827;
+    text-decoration: none;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -51px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 51px;
+}
+
+.btn-primary.active,
+.btn-warning.active,
+.btn-danger.active,
+.btn-success.active,
+.btn-info.active,
+.btn-inverse.active { color: rgba(255,255,255,0.75) }
+.btn-primary {
+    color: #fff;
+    background-color: #eb993e;
+    background-image: -moz-linear-gradient(top, #fdac52, #d17e20);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdac52), to(#d17e20));
+    background-image: -webkit-linear-gradient(top, #fdac52, #d17e20);
+    background-image: -o-linear-gradient(top, #fdac52, #d17e20);
+    background-image: linear-gradient(to bottom, #fdac52,#d17e20);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFDAC52', endColorstr='#FFD17E20', GradientType=0);
+    border-color: #fdac52;
+    *background-color: #d17e20;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+    color: #fff;
+    background-color: #d17e20;
+    *background-color: #bb711d;
+}
+.btn-primary:active,
+.btn-primary.active { background-color: #a56319 \9 }
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+  color: #ffffff;
+  background-color: #272e34;
+}
+
+.navbar-inverse .navbar-inner {
+    background-color: #272e34;
+    background-image: -moz-linear-gradient(top, #272e34, #272e34);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#272e34), to(#272e34));
+    background-image: -webkit-linear-gradient(top, #272e34, #272e34);
+    background-image: -o-linear-gradient(top, #272e34, #272e34);
+    background-image: linear-gradient(to bottom, #272e34,#272e34);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF272E34', endColorstr='#FF272E34', GradientType=0);
+    border-color: #272e34;
+}
+.navbar-inverse .brand,
+.navbar-inverse .nav>li>a {
+    color: #ccc;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+.navbar-inverse .brand:hover,
+.navbar-inverse .brand:focus,
+.navbar-inverse .nav>li>a:hover,
+.navbar-inverse .nav>li>a:focus { color: #fff }
+.navbar-inverse .brand { color: #ccc }
+.navbar-inverse .navbar-text { color: #ccc }
+.navbar-inverse .nav>li>a:focus,
+.navbar-inverse .nav>li>a:hover {
+    background-color: transparent;
+    color: #fff;
+}
+.navbar-inverse .nav .active>a,
+.navbar-inverse .nav .active>a:hover,
+.navbar-inverse .nav .active>a:focus {
+    color: #fff;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-link { color: #ccc }
+.navbar-inverse .navbar-link:hover,
+.navbar-inverse .navbar-link:focus { color: #fff }
+.navbar-inverse .divider-vertical {
+    border-left-color: #272e34;
+    border-right-color: #272e34;
+}
+
+.navbar.navbar-static-top .nav>li.active>a,
+.navbar.navbar-fixed-top .nav>li.active>a {
+    -webkit-box-shadow: 0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 transparent;
+    box-shadow: 0 0 0 transparent;
+    background-image: url(../static/img/navbar_active_indicator.png);
+    background-position: 48% 115%;
+    background-repeat: no-repeat;
+}
+
+.navbar .brand {
+  padding: 5px 20px 5px;
+}
