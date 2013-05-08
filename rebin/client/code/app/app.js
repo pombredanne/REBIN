@@ -21,7 +21,8 @@ $(function() {
         regex: 'Text',
         'command line flag binding': 'Text',
         'default value': 'Text',
-        'allow override of default': { type: 'Checkbox' }
+        'allow override of default': { type: 'Checkbox' },
+        isFile: { type: 'Checkbox' }
       }
     }
   }
