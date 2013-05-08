@@ -13,13 +13,17 @@ $(function() {
     url: {type: 'Text', validators: ['required']},
     executable: {type: 'FileSystem', validators: ['required']},
     description: 'TextArea',
-    parameters:    { type: 'List', itemType: 'Object', subSchema: {
+    parameters: { 
+      type: 'List', 
+      itemType: 'Object', 
+      subSchema: {
         name: { validators: ['required'] },
         regex: 'Text',
-	'command line flag binding': 'Text',
-	'default value': 'Text',
-	'allow override of default' : { type: 'Checkbox' }
-    }}
+        'command line flag binding': 'Text',
+        'default value': 'Text',
+        'allow override of default': { type: 'Checkbox' }
+      }
+    }
   }
   
   // override marionette's template rendering to use hogan.js from socketstream

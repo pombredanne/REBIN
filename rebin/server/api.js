@@ -30,9 +30,9 @@ exports.generateBinaryRoutes = function() {
 }
 
 
-function sanitise(unsanitised_string,match_to){
+function sanitise(unsanitised_string, match_to){
   var sanitised = unsanitised_string.match(match_to);
-  if (sanitised !== null){
+  if (sanitised !== null) {
     var toReturn = new Array();
     for(var idx = 1; idx < sanitised.length; idx++){
       toReturn.push(sanitised[idx]);
@@ -64,21 +64,21 @@ exports.get = function (req, res, next) {
         var param = req.query[parameter];
 
 
-	// Sometimes you may wish to pass a default value to a command line
-	// argument, without need the user to specify it manually (or maybe you
-	// want it to be opaque to the end user). 
-        var default_value= binary.parameters[parameterObject]['default value'];
-	var override_allowed = binary.parameters[parameterObject]['allow override of default'];
+        // Sometimes you may wish to pass a default value to a command line
+        // argument, without need the user to specify it manually (or maybe you
+        // want it to be opaque to the end user). 
+        var default_value = binary.parameters[parameterObject]['default value'];
+        var override_allowed = binary.parameters[parameterObject]['allow override of default'];
         if (
-		default_value != null //make sure we have a default to set, otherwise assume comes from user
-		&& 
-		((param == null || param.length == 0 ) // in the case that they didn't set the argument
-		|| 
-		( override_allowed == false )) // Or if they aren't allowed to override it, we use the default
-	) {
+          default_value != null //make sure we have a default to set, otherwise assume comes from user
+          && 
+          ((param == null || param.length == 0 ) // in the case that they didn't set the argument
+          || 
+          ( override_allowed == false )) // Or if they aren't allowed to override it, we use the default
+        ) {
           params += ' '+default_value;
-	// In the event the user provides a value (and is allowed to override)
-	// OR there is no default, we should attempt to use that
+          // In the event the user provides a value (and is allowed to override)
+          // OR there is no default, we should attempt to use that
         } else {
           // if multiple parameters is with the same name are in the query string, 
           // they are combined into an array with the param name as key
@@ -93,9 +93,9 @@ exports.get = function (req, res, next) {
             params += ' "' + safe_params.join('" "');
             params += '"';
           } else if (typeof param !== 'undefined') {
-              param = sanitise(param,match_to);
-              if(param != null) {
-                params += ' "' + param + '"';
+            param = sanitise(param,match_to);
+            if(param != null) {
+              params += ' "' + param + '"';
             }
           }
         }
