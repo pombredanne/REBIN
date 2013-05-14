@@ -7,6 +7,8 @@ Creating a web service really should be this easy. Doesn't matter if you program
 ##Basic Use Case
 You have already or have created a CLI based application or script. It takes input, it produces output. Now, how do you expose your work to the web so you can utilize via a web service. REBIN takes care of that! 
 
+REBIN Also supports files as input and output.
+
 ##Technologies
 [node.js](http://nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
@@ -37,7 +39,7 @@ Using homebrew. Everyone should use homebrew. http://mxcl.github.com/homebrew/
 
 Install the "Command Line Tools for Xcode": http://connect.apple.com or use the Xcode included "Downloads" preference pane to install optional components such as command line tools, and previous iOS Simulators. To open this pane click the "Xcode" button in the top left of the screen near the Apple logo, then click "Preferences" then click "Downloads".
 
-![alt text](http://surfiki.io/CLT.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738569149/" title="CLT by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7281/8738569149_db7811ff8f.jpg" width="500" height="168" alt="CLT"></a>
 
 --
 
@@ -164,11 +166,11 @@ Issue the command to start.
 
 ##Dashboard
 
-* Open your broswer to: http://localhost:3000/
+* Open your browser to: http://localhost:3000/
     
-You should see: (The fields will be blank) Enter the credendtials you defined when running setup.js
+You should see: (The fields will be blank) Enter the credentials you defined when running setup.js
 
-![alt text](http://surfiki.io/login.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738566529/" title="login by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7281/8738566529_830f39b993.jpg" width="305" height="294" alt="login"></a>
  
 ###Basic Example
 
@@ -218,17 +220,17 @@ Within the REBIN dashboard, first click: Add New Endpoint, first thing you will 
 
 
 
-![alt text](http://surfiki.io/exselect.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8739685560/" title="exselect by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7281/8739685560_cab356e903.jpg" width="500" height="425" alt="exselect"></a>
 
 Provide the URL you would like for your endpoint: ystock
 
 Finally we need to add a parameter. In the case of ystock, it takes a symbol parameter (That's what we are calling it, we could call it anything really). Then click on Save.
 
-![alt text](http://surfiki.io/detail.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738566557/" title="detail by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7282/8738566557_aac7054f1f.jpg" width="500" height="443" alt="detail"></a>
 
 You will now see your Endpoint setup, as shown below:
 
-![alt text](http://surfiki.io/setup.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738566531/" title="setup by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7284/8738566531_37d1b640e6.jpg" width="500" height="64" alt="setup"></a>
 
 We can now test our endpoint! If you happen to be running this on localhost, then your URL would be:
 
@@ -246,11 +248,11 @@ That's it!
 
 The dashboard provides a Debug section that will aid in resolving any issues you may encounter with a specific endpoint and parameters associated.
 
-![alt text](http://surfiki.io/debug.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738566599/" title="debug by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7284/8738566599_f221701059.jpg" width="500" height="464" alt="debug"></a>
 
 An example of an error:
 
-![alt text](http://surfiki.io/debug2.png)
+<a href="http://www.flickr.com/photos/95752811@N04/8738566539/" title="debug2 by NyströmAnthony, on Flickr"><img src="http://farm8.staticflickr.com/7281/8738566539_f85492f706.jpg" width="500" height="414" alt="debug2"></a>
  
 --
 
